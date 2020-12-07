@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/25 10:53:17 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 18:31:00 by iouali           ###   ########.fr       */
+/*   Created: 2020/12/07 18:10:08 by iouali            #+#    #+#             */
+/*   Updated: 2020/12/07 18:36:14 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strndup(char *s, size_t size)
 {
@@ -20,6 +20,7 @@ char	*ft_strndup(char *s, size_t size)
 	result = malloc(sizeof(char) * (size + 1));
 	if (!result)
 		return (NULL);
+	s = (char *)s;
 	i = 0;
 	while (i < size)
 	{
@@ -51,7 +52,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	j;
 	char	*str;
 
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2)) + 1)))
+	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen((s2)) + 1))))
 		return (NULL);
 	i = 0;
 	while (s1[i])

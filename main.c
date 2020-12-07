@@ -1,6 +1,6 @@
 #include "get_next_line.h"
 
-int main()
+int main(int argc, char **argv)
 {
 	int fd1;
 	int fd2;
@@ -10,25 +10,25 @@ int main()
 	char *line;
 
 	line = '\0';
-	fd1 = open("text1.txt", O_RDONLY);
+	fd1 = open(argv[1], O_RDONLY);
 	if(fd1 == -1)
 	{
 		printf("Open failed\n");
 		return (-1);
 	}
-	fd2= open("text2.txt", O_RDONLY);
+	fd2= open(argv[2], O_RDONLY);
 	if(fd2 == -1)
 	{
 		printf("Open failed\n");
 		return (-1);
 	}
-	fd3 = open("text3.txt", O_RDONLY);
+	fd3 = open(argv[3], O_RDONLY);
 	if(fd3 == -1)
 	{
 		printf("Open failed\n");
 		return (-1);
 	}
-	fd4 = open("text.txt", O_RDONLY);
+	fd4 = open(argv[4], O_RDONLY);
 	if(fd4 == -1)
 	{
 		printf("Open failed\n");
