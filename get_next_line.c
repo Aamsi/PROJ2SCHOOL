@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:44:48 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 18:35:15 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/07 19:50:12 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ int			get_next_line(int fd, char **line)
 	static char		*tmp_char[256];
 	int				ret;
 
-	if (!line || BUFFER_SIZE <= 0)
-		return (free_for_all(tmp_char[fd], *line));
+	if (!line || BUFFER_SIZE <= 0 || fd < 0)
+		return (-1);
 	if ((ret = read_file(fd, &tmp_char[fd])) == -1)
 		return (free_for_all(tmp_char[fd], *line));
 	if (!(*line = ft_strndup(tmp_char[fd], ft_strlen_nl(tmp_char[fd]))))

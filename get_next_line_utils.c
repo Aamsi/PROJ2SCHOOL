@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:53:17 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 18:31:00 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/07 19:46:36 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,8 @@ int		ft_strlen(char *str)
 int		free_for_all(char *tmp_char, char *line)
 {
 	if (line)
-	{
 		free(line);
-		line = NULL;
-	}
 	if (tmp_char)
-	{
 		free(tmp_char);
-		tmp_char = NULL;
-	}
 	return (-1);
 }

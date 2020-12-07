@@ -1,70 +1,23 @@
 #include "get_next_line.h"
 
-int main(int argc, char **argv)
+int     main(int argc, char **argv)
 {
-	int fd1;
-	int fd2;
-	int fd3;
-	int fd4;
+    int fd;
+    char *line = 0;
+    int ret;
 
-	char *line;
-
-	line = '\0';
-	fd1 = open(argv[1], O_RDONLY);
-	if(fd1 == -1)
-	{
-		printf("Open failed\n");
-		return (-1);
-	}
-	fd2= open(argv[2], O_RDONLY);
-	if(fd2 == -1)
-	{
-		printf("Open failed\n");
-		return (-1);
-	}
-	fd3 = open(argv[3], O_RDONLY);
-	if(fd3 == -1)
-	{
-		printf("Open failed\n");
-		return (-1);
-	}
-	fd4 = open(argv[4], O_RDONLY);
-	if(fd4 == -1)
-	{
-		printf("Open failed\n");
-		return (-1);
-	}
-	printf("fd 1: retour gnl = %i\n", get_next_line(fd1, &line));
-	printf("fd 1: line = %s\n", line);
-	free(line);
-	printf("fd 2: retour gnl = %i\n", get_next_line(fd2, &line));
-	printf("fd 2:line = %s\n", line);
-	free(line);
-	printf("fd 3:retour gnl = %i\n", get_next_line(fd3, &line));
-	printf("fd 3:line = %s\n", line);
-	free(line);
-	printf("fd 4:retour gnl = %i\n", get_next_line(fd4, &line));
-	printf("fd 4:line = %s\n", line);
-	free(line);
-	printf("fd 1:retour gnl = %i\n", get_next_line(fd1, &line));
-	printf("fd 1:line = %s\n", line);
-	free(line);
-	printf("fd 2:retour gnl = %i\n", get_next_line(fd2, &line));
-	printf("fd 2:line = %s\n", line);
-	free(line);
-	printf("fd 3:retour gnl = %i\n", get_next_line(fd3, &line));
-	printf("fd 3:line = %s\n", line);
-	free(line);
-	printf("fd 4:retour gnl = %i\n", get_next_line(fd4, &line));
-	printf("fd 4:line = %s\n", line);
-	free(line);
-	if(close(fd1) == -1)
-		return (-1);
-	if(close(fd2) == -1)
-		return (-1);
-	if(close(fd3) == -1)
-		return (-1);
-	if(close(fd4) == -1)
-		return (-1);
-	return (0);
+    line = 0;
+    if (argc == 1)
+        fd = 0;
+    else
+        fd = open(argv[1], O_RDONLY);
+    while ((ret = get_next_line(fd, &line)) > 0)
+    {
+	    printf("line = [%s] / ret: %d\n", line, ret);
+        free(line);
+    }
+    free(line);
+    // ret = get_next_line(-1, &line);
+    // printf("line = [%s] / ret: %d\n", line, ret);
+    // free(line);
 }
