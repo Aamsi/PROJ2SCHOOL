@@ -11,13 +11,13 @@ int     main(int argc, char **argv)
         fd = 0;
     else
         fd = open(argv[1], O_RDONLY);
-    while ((ret = get_next_line(fd, &line)) > 0)
+    while ((ret = get_next_line(500, &line)) > 0)
     {
 	    printf("line = [%s] / ret: %d\n", line, ret);
         free(line);
     }
     free(line);
-    // ret = get_next_line(-1, &line);
-    // printf("line = [%s] / ret: %d\n", line, ret);
-    // free(line);
+    ret = get_next_line(500, &line);
+    printf("line = [%s] / ret: %d\n", line, ret);
+    free(line);
 }

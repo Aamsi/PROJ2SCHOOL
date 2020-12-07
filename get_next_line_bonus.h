@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:09:13 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 18:36:05 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/07 20:10:37 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ char		*delete_former_str(char *s, char c);
 char		*ft_strdup(char *s);
 char		*ft_strchr(char *s, int c);
 int			read_file(int fd, char **tmp_char);
-int			free_for_all(char *tmp_char, char *line);
+int			free_for_all(char *tmp_char);
 
 #endif

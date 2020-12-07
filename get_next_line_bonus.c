@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:09:44 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 18:12:23 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/07 20:11:25 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			ft_strlen_nl(char *str)
 	return (i);
 }
 
-char		*ft_strchr(const char *s, int c)
+char		*ft_strchr(char *s, int c)
 {
 	int		i;
 	char	*tmp_s;
