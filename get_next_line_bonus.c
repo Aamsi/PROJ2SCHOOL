@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:09:44 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 20:11:25 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/07 21:11:06 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,16 @@ int			ft_strlen_nl(char *str)
 char		*ft_strchr(char *s, int c)
 {
 	int		i;
-	char	*tmp_s;
+	int		len;
 
 	if (!s)
 		return (NULL);
-	tmp_s = (char *)s;
 	i = 0;
-	while (i < ft_strlen(tmp_s) + 1)
+	len = ft_strlen(s);
+	while (i < len + 1)
 	{
-		if (tmp_s[i] == (unsigned char)c)
-			return (tmp_s + i);
+		if (s[i] == (unsigned char)c)
+			return (s + i);
 		i++;
 	}
 	return (NULL);
