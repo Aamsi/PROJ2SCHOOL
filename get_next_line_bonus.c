@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:09:44 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/08 20:00:20 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/08 20:09:24 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,16 @@ int			read_file(int fd, char **tmp_char)
 			return (-1);
 		buff[ret] = '\0';
 		if (*tmp_char == 0)
+		{
 			if (!(*tmp_char = ft_strdup(buff)))
 				return (-1);
-		else if (!(*tmp_char = ft_strjoin(*tmp_char, buff)))
-			return (-1);
+		}
+		else
+		{
+			*tmp_char = ft_strjoin(*tmp_char, buff);
+			if (!*tmp_char)
+				return (-1);
+		}
 	}
 	return (ret);
 }
