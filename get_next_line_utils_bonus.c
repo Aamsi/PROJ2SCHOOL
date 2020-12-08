@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:10:08 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 20:09:18 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/08 20:02:44 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strndup(char *s, size_t size)
 	result = malloc(sizeof(char) * (size + 1));
 	if (!result)
 		return (NULL);
-	s = (char *)s;
 	i = 0;
 	while (i < size)
 	{
@@ -52,7 +51,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	j;
 	char	*str;
 
-	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen((s2)) + 1))))
+	if (!(str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1))))
 		return (NULL);
 	i = 0;
 	while (s1[i])

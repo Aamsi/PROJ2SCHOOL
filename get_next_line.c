@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 10:44:48 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 21:10:46 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/08 20:01:06 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,17 @@ int			read_file(int fd, char **tmp_char)
 			return (-1);
 		buff[ret] = '\0';
 		if (*tmp_char == 0)
-			*tmp_char = ft_strdup(buff);
-		else
-			*tmp_char = ft_strjoin(*tmp_char, buff);
+			if (!(*tmp_char = ft_strdup(buff)))
+				return (-1);
+		else if (!(*tmp_char = ft_strjoin(*tmp_char, buff)))
+			return (-1);
 	}
 	return (ret);
 }
 
 int			ft_strlen_nl(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\n' && str[i])
@@ -62,17 +63,15 @@ char		*ft_strchr(char *s, int c)
 char		*ft_strdup(char *s)
 {
 	size_t	i;
-	char	*tmp_s;
 	char	*result;
 
-	result = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	result = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!result)
 		return (NULL);
-	tmp_s = (char *)s;
 	i = 0;
-	while (tmp_s[i])
+	while (s[i])
 	{
-		result[i] = tmp_s[i];
+		result[i] = s[i];
 		i++;
 	}
 	result[i] = '\0';

@@ -6,7 +6,7 @@
 /*   By: iouali <iouali@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 18:09:44 by iouali            #+#    #+#             */
-/*   Updated: 2020/12/07 21:11:06 by iouali           ###   ########.fr       */
+/*   Updated: 2020/12/08 20:00:20 by iouali           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int			read_file(int fd, char **tmp_char)
 			return (-1);
 		buff[ret] = '\0';
 		if (*tmp_char == 0)
-			*tmp_char = ft_strdup(buff);
-		else
-			*tmp_char = ft_strjoin(*tmp_char, buff);
+			if (!(*tmp_char = ft_strdup(buff)))
+				return (-1);
+		else if (!(*tmp_char = ft_strjoin(*tmp_char, buff)))
+			return (-1);
 	}
 	return (ret);
 }
@@ -62,17 +63,15 @@ char		*ft_strchr(char *s, int c)
 char		*ft_strdup(char *s)
 {
 	size_t	i;
-	char	*tmp_s;
 	char	*result;
 
-	result = malloc(sizeof(char) * ft_strlen((char *)s) + 1);
+	result = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!result)
 		return (NULL);
-	tmp_s = (char *)s;
 	i = 0;
-	while (tmp_s[i])
+	while (s[i])
 	{
-		result[i] = tmp_s[i];
+		result[i] = s[i];
 		i++;
 	}
 	result[i] = '\0';
@@ -84,14 +83,14 @@ int			get_next_line(int fd, char **line)
 	static char		*tmp_char[256];
 	int				ret;
 
-	if (!line || BUFFER_SIZE <= 0)
+	if (!line || BUFFER_SIZE <= 0 || fd < 0 || fd > 256)
 		return (-1);
 	if ((ret = read_file(fd, &tmp_char[fd])) == -1)
-		return (-1);
+		return (free_for_all(tmp_char[fd]));
 	if (!(*line = ft_strndup(tmp_char[fd], ft_strlen_nl(tmp_char[fd]))))
-		return (-1);
+		return (free_for_all(tmp_char[fd]));
 	if (!(tmp_char[fd] = delete_former_str(tmp_char[fd], '\n')))
-		return (-1);
+		return (free_for_all(tmp_char[fd]));
 	if (ret == 0)
 	{
 		free(tmp_char[fd]);
